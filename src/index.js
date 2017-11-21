@@ -41,9 +41,7 @@ const install = (extensionReference, forceDownload = false) => {
   return downloadChromeExtension(chromeStoreID, forceDownload)
     .then((extensionFolder) => {
       // Use forceDownload, but already installed
-      if (extensionInstalled) {
-        BrowserWindow.removeDevToolsExtension(extensionName);
-      }
+      BrowserWindow.removeDevToolsExtension(extensionName);
       const name = BrowserWindow.addDevToolsExtension(extensionFolder); // eslint-disable-line
       fs.writeFileSync(
         IDMapPath,
